@@ -17,7 +17,7 @@ export class AuthService {
     private tokenService: TokensService,
   ) {}
 
-  async signupLocal(registerDto: CreateUserDto) {
+  async register(registerDto: CreateUserDto) {
     const candidate = await this.userService.getUserByEmail(registerDto.email);
     if (candidate) {
       throw new HttpException(
@@ -36,7 +36,7 @@ export class AuthService {
     return tokens;
   }
 
-  async signinLocal(loginDto: LoginAuthDto) {
+  async login(loginDto: LoginAuthDto) {
     const user = await this.userService.getUserByEmail(loginDto.email);
 
     if (!user) {

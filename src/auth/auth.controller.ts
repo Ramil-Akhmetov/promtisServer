@@ -26,7 +26,7 @@ export class AuthController {
     @Body() createUserDto: CreateUserDto,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const { accessToken, refreshToken } = await this.authService.signupLocal(
+    const { accessToken, refreshToken } = await this.authService.register(
       createUserDto,
     );
 
@@ -41,7 +41,7 @@ export class AuthController {
     @Body() loginAuthDto: LoginAuthDto,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const { accessToken, refreshToken } = await this.authService.signinLocal(
+    const { accessToken, refreshToken } = await this.authService.login(
       loginAuthDto,
     );
 
